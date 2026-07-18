@@ -1,58 +1,69 @@
-const skillGroups = [
+"use client";
+
+import { motion } from "framer-motion";
+
+const groups = [
   {
     title: "AI & Machine Learning",
     skills: [
       "Generative AI",
       "Machine Learning",
-      "Natural Language Processing",
+      "NLP",
       "RAG",
       "Scikit-learn",
       "Model Evaluation",
     ],
   },
   {
-    title: "Programming & Data",
+    title: "Development",
     skills: [
       "Python",
-      "SQL",
-      "Pandas",
-      "NumPy",
       "FastAPI",
       "REST APIs",
+      "SQL",
+      "React",
+      "Next.js",
     ],
   },
   {
-    title: "Tools & Platforms",
+    title: "Data & Tools",
     skills: [
+      "Pandas",
+      "NumPy",
       "Git",
       "GitHub",
       "Docker",
       "Streamlit",
-      "Azure",
-      "AWS",
     ],
   },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="skills-section">
+    <section id="skills" className="section skills-section">
       <div className="section-heading">
-        <p className="section-label">Capabilities</p>
-        <h2>Technologies I work with.</h2>
+        <p className="skills-label">Capabilities</p>
+        <p className="skills-subtitle">Tools behind the work.</p>
       </div>
 
       <div className="skills-grid">
-        {skillGroups.map((group) => (
-          <article className="skill-group" key={group.title}>
+        {groups.map((group, index) => (
+          <motion.div
+            className="skill-group"
+            key={group.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+          >
             <h3>{group.title}</h3>
 
-            <ul>
+            <div className="skill-tags">
               {group.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
+                <span key={skill}>{skill}</span>
               ))}
-            </ul>
-          </article>
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>

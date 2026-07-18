@@ -1,39 +1,52 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const experiences = [
   {
-    role: "Wireless Testing Intern",
+    year: "2026 — Present",
+    role: "Software Engineer",
     company: "UL Solutions",
-    period: "2026 — Present",
     description:
-      "Execute wireless and RF testing procedures, record technical results, analyze test data, and support repeatable lab testing processes.",
+      " Worked on software application development using Python, backend technologies, REST APIs, databases, debugging, testing, and data-driven problem solving.",
   },
   {
+    year: "2021-2023",
     role: "AI Engineer",
-    company: "BotAgents LLC",
-    period: "2026",
+    company: "Clarosoft PVT LTD",
     description:
-      "Worked on AI applications using Python, machine learning, and Generative AI workflows.",
+      "Worked on AI-focused application development using Python, machine learning concepts, Generative AI workflows, and data-driven problem solving.",
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="experience-section">
-      <p className="section-label">Experience</p>
+    <section id="experience" className="section experience-section">
+      <div className="section-heading">
+        <p className="section-label">Experience</p>
+        <h2>Learning, building, and contributing.</h2>
+      </div>
 
-      <div className="experience-list">
-        {experiences.map((experience) => (
-          <article className="experience-item" key={experience.company}>
-            <div>
-              <h3>{experience.role}</h3>
-              <p>{experience.company}</p>
+      <div className="timeline">
+        {experiences.map((item, index) => (
+          <motion.article
+            className="timeline-item"
+            key={`${item.company}-${item.role}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.12 }}
+          >
+            <span className="timeline-dot" />
+
+            <div className="timeline-year">{item.year}</div>
+
+            <div className="timeline-content">
+              <h3>{item.role}</h3>
+              <p className="company-name">{item.company}</p>
+              <p>{item.description}</p>
             </div>
-
-            <p className="experience-period">{experience.period}</p>
-
-            <p className="experience-description">
-              {experience.description}
-            </p>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>

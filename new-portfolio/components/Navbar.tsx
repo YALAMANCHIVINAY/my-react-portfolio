@@ -1,6 +1,15 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Navbar() {
   return (
-    <nav className="navbar">
+    <motion.nav
+      className="navbar"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       <a href="#home" className="logo">
         Vinay Yalamanchi
       </a>
@@ -19,6 +28,6 @@ export default function Navbar() {
         </a>
         <a href="#contact">Contact</a>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
