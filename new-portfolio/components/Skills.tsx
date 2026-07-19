@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 
-const groups = [
+const skillGroups = [
   {
+    number: "01",
     title: "AI & Machine Learning",
     skills: [
       "Generative AI",
@@ -15,6 +16,7 @@ const groups = [
     ],
   },
   {
+    number: "02",
     title: "Development",
     skills: [
       "Python",
@@ -26,6 +28,7 @@ const groups = [
     ],
   },
   {
+    number: "03",
     title: "Data & Tools",
     skills: [
       "Pandas",
@@ -41,21 +44,34 @@ const groups = [
 export default function Skills() {
   return (
     <section id="skills" className="section skills-section">
-      <div className="section-heading">
-        <p className="skills-label">Capabilities</p>
-        <p className="skills-subtitle">Tools behind the work.</p>
+      <div className="section-header">
+        <div>
+          <p className="section-index">04</p>
+          <p className="section-label">Capabilities</p>
+        </div>
+
+        <h2>Tools behind the work.</h2>
       </div>
 
       <div className="skills-grid">
-        {groups.map((group, index) => (
-          <motion.div
+        {skillGroups.map((group, index) => (
+          <motion.article
             className="skill-group"
             key={group.title}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{
+              duration: 0.65,
+              delay: index * 0.1,
+            }}
+            whileHover={{ y: -6 }}
           >
+            <div className="skill-card-top">
+              <span>{group.number}</span>
+              <span>+</span>
+            </div>
+
             <h3>{group.title}</h3>
 
             <div className="skill-tags">
@@ -63,7 +79,7 @@ export default function Skills() {
                 <span key={skill}>{skill}</span>
               ))}
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </section>
